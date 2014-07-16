@@ -1,0 +1,113 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <p class="lead">The best app to find the best hairdressers</p>
+    <div ng-show="submitted">
+      <h3>Thanks for your submission!</h3>
+    </div>
+    <form class="form-horizontal" name="userForm" ng-show="!submitted">
+      <div>
+        <h3>You are :</h3>
+      </div>
+      <div ng-switch="step">
+        <!-- Gender -->
+        <div class="form-group" ng-switch-when="1">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default" ng-class="{active: newUser.gender == 'M'}">
+              <input type="radio" name="gender" ng-model="newUser.gender" id="genderMen" value="M">
+              a Men
+            </label>
+            <label class="btn btn-default" ng-class="{active: newUser.gender == 'F'}">
+              <input type="radio" name="gender" ng-model="newUser.gender" id="genderWomen" value="F">
+              a Women
+            </label>
+          </div>
+        </div>
+
+        <!-- Hairdresser -->
+        <div class="form-group" ng-switch-when="2">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default" ng-class="{active: newUser.hairdresser}">
+              <input type="radio" name="hairdresser" ng-model="newUser.hairdresser" id="hairdresserTrue" value=true>
+              a Hairdresser (even just for your friends)
+            </label>
+            <label class="btn btn-default" ng-class="{active: newUser.hairdresser == false}">
+              <input type="radio" name="hairdresser" ng-model="newUser.hairdresser" id="hairdresserFalse" value=false>
+              not a Hairdresser
+            </label>
+          </div>
+        </div>
+
+        <!-- Pro -->
+        <div class="form-group" ng-switch-when="3">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default" ng-class="{active: newUser.pro}">
+              <input type="radio" name="pro" ng-model="newUser.pro" id="proTrue" value=true>
+              a professional
+            </label>
+            <label class="btn btn-default" ng-class="{active: newUser.pro == false}">
+              <input type="radio" name="pro" ng-model="newUser.pro" id="proFalse" value=false>
+              a hairdresser just for fun
+            </label>
+          </div>
+        </div>
+
+        <!-- Salon -->
+        <div class="form-group" ng-switch-when="4">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default" ng-class="{active: newUser.salon}">
+              <input type="radio" name="salon" ng-model="newUser.salon" id="salonTrue" value=true>
+              working in a salon
+            </label>
+            <label class="btn btn-default" ng-class="{active: newUser.salon == false}">
+              <input type="radio" name="salon" ng-model="newUser.salon" id="salonFalse" value=false>
+              working alone
+            </label>
+          </div>
+        </div>
+
+        <!-- Email input-->
+        <div class="form-group" ng-switch-when="5">
+          <div class="input-group">
+            <input id="email" name="email" type="email" ng-model="newUser.email" placeholder="Email" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="addUser()">Submit!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+<!--     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+ -->
+    </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Dev</h1>
+
+      <h4 class="page-header">Step: {{step}}</h4>
+      <h4 class="page-header">Current newUser:</h4>
+        <ul class="nav nav-tabs nav-stacked col-lg-6">
+          <li>Email: {{ newUser.email }}</li>
+          <li>Hairdresser: {{ newUser.hairdresser }}</li>
+          <li>Gender: {{ newUser.gender }}</li>
+          <li>Pro: {{ newUser.pro }}</li>
+          <li>Salon: {{ newUser.salon }}</li>
+        </ul>
+      <h4 class="page-header">Users:</h4>
+      <ul class="nav nav-tabs nav-stacked col-lg-6" ng-repeat="user in users">
+        <li>{{user.email}}| Gender: {{user.gender}} | Pro: {{user.pro}} | Salon: {{user.salon}} | Hairdresser: {{ user.hairdresser }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Made with <span class="glyphicon glyphicon-heart"></span> in Paris by the Hairfie Team</p>
+  </div>
+</footer>
