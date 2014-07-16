@@ -5,9 +5,9 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new Schema({
   email: String,
-  hairdresser: Boolean,
-  pro: Boolean,
-  salon: Boolean,
+  hairdresser: { type: Boolean, default: false },
+  pro: { type: Boolean, default: false },
+  salon: { type: Boolean, default: false },
   gender : { type: String, upper: true, match: /[MmFf]/ }
 });
 

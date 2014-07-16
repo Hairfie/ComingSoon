@@ -1,5 +1,5 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
+<!-- <div ng-include="'components/navbar/navbar.html'"></div>
+ -->
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Coming Soon</h1>
@@ -69,17 +69,18 @@
         </div>
 
         <!-- Email input-->
-        <div class="form-group" ng-switch-when="5">
+        <div class="form-group has-feedback" ng-class="{'has-success': userForm.email.$valid && userForm.email.$dirty, 'has-error': userForm.email.$error.email && userForm.email.$dirty}">
           <div class="input-group">
-            <input id="email" name="email" type="email" ng-model="newUser.email" placeholder="Email" class="form-control">
+            <input id="email" name="email" type="email" ng-model="newUser.email" placeholder="Email" class="form-control" required>
             <span class="input-group-btn">
               <button class="btn btn-default" type="button" ng-click="addUser()">Submit!</button>
             </span>
+            <span class="form-control-feedback glyphicon" ng-show="userForm.email.$dirty" ng-class="{'glyphicon-ok': userForm.email.$valid, 'glyphicon-remove': userForm.email.$error.email}" style="right: 80px;"></span>
           </div>
         </div>
       </div>
     </form>
-<!--     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+<!--     <img src="assets/images/yeoman.png" alt="I'm Yeoman">ng-class="{glyphicon-ok: newUser.email.$valid}"
  -->
     </div>
 </header>

@@ -15,9 +15,10 @@ angular.module('comingSoonApp')
       if($scope.newUser === '') {
         return;
       }
-      $http.post('/api/users', { user: $scope.newUser });
-      $scope.newUser = '';
-      $scope.submitted = true;
+      $http.post('/api/users', { user: $scope.newUser }).success(function() {
+        $scope.newUser = '';
+        $scope.submitted = true;
+      });
     };
 
     $scope.onUserChange = function(newValue, oldValue, scope) {
