@@ -502,7 +502,34 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    // Deployment
+    sshconfig: {
+      dev: {
+        host: '<%= secret.host %>',
+        username: '<%= secret.username %>',
+        agent: process.env.SSH_AUTH_SOCK
+      }
+    },
+    sshexec: {
+      deploy: {
+        command: [
+          'cd /home/coming_soon/app',
+          'git pull origin master',
+          'npm install',
+          'forever stop server.js',
+          'forever start server.js',
+          'forever list'
+        ].join(' && '),
+        options: {
+          config: 'dev'
+        }
+      }
+    }
   });
+
+  // deployment
+  grunt.registerTask('deploy', ['sshexec:deploy']);
 
   // Used for delaying livereload until after server has restarted
   grunt.registerTask('wait', function () {
@@ -529,7 +556,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:sass', 
+        'injector:sass',
         'concurrent:server',
         'injector',
         'bowerInstall',
@@ -541,7 +568,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'env:all',
-      'injector:sass', 
+      'injector:sass',
       'concurrent:server',
       'injector',
       'bowerInstall',
@@ -571,7 +598,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:sass', 
+        'injector:sass',
         'concurrent:test',
         'injector',
         'autoprefixer',
@@ -584,7 +611,7 @@ module.exports = function (grunt) {
         'clean:server',
         'env:all',
         'env:test',
-        'injector:sass', 
+        'injector:sass',
         'concurrent:test',
         'injector',
         'bowerInstall',
@@ -602,7 +629,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:sass', 
+    'injector:sass',
     'concurrent:dist',
     'injector',
     'bowerInstall',
@@ -624,4 +651,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-ssh');
 };
