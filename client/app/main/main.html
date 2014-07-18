@@ -69,7 +69,7 @@
         </div>
 
         <!-- Email input-->
-        <div class="form-group has-feedback" ng-class="{'has-success': userForm.email.$valid && userForm.email.$dirty, 'has-error': userForm.email.$error.email && userForm.email.$dirty}">
+        <div class="form-group has-feedback" ng-class="{'has-success': userForm.email.$valid && userForm.email.$dirty, 'has-error': userForm.email.$error.email && userForm.email.$dirty}" ng-switch-when="5">
           <div class="input-group">
             <input id="email" name="email" type="email" ng-model="newUser.email" placeholder="Email" class="form-control" required>
             <span class="input-group-btn">
@@ -85,7 +85,7 @@
     </div>
 </header>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Dev</h1>
@@ -105,7 +105,7 @@
       </ul>
     </div>
   </div>
-</div>
+</div> -->
 
 <footer class="footer">
   <div class="container">

@@ -503,33 +503,25 @@ module.exports = function (grunt) {
       }
     },
 
-    // Deployment
-    sshconfig: {
-      dev: {
-        host: '<%= secret.host %>',
-        username: '<%= secret.username %>',
-        agent: process.env.SSH_AUTH_SOCK
+    secret: grunt.file.readJSON('secret.json'),
+    environments: {
+      production: {
+          options: {
+              host: "<%= secret.production.host %>",
+              username: "<%= secret.production.username %>",
+              port: "<%= secret.production.port %>",
+              agent: process.env.SSH_AUTH_SOCK,
+              deploy_path: '/home/coming_soon/app',
+              local_path: 'dist',
+              current_symlink: 'current'
+          }
       }
-    },
-    sshexec: {
-      deploy: {
-        command: [
-          'cd /home/coming_soon/app',
-          'git pull origin master',
-          'npm install',
-          'forever stop server.js',
-          'forever start server.js',
-          'forever list'
-        ].join(' && '),
-        options: {
-          config: 'dev'
-        }
-      }
-    }
+  }
   });
 
   // deployment
   grunt.registerTask('deploy', ['sshexec:deploy']);
+  grunt.loadNpmTasks('grunt-ssh-deploy');
 
   // Used for delaying livereload until after server has restarted
   grunt.registerTask('wait', function () {
