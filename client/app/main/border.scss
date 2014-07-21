@@ -1,0 +1,18 @@
+body:before, body:after {
+    content: "";
+    position: fixed;
+    background: #ffffff;
+    left: 0;
+    right: 0;
+    height: 6px;
+}
+body:before {
+    top: 0;
+}
+body:after {
+    bottom: 0;
+}
+body {
+    border-left: 6px solid #ffffff;
+    border-right: 6px solid #ffffff;
+}

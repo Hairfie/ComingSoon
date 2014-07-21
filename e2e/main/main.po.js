@@ -11,9 +11,9 @@ var MainPage = function() {
   this.imgEl = this.heroEl.element(by.css('img'));
   this.anchorEl = this.heroEl.element(by.css('a'));
 
-  this.repeater = by.repeater('thing in awesomeThings');
-  this.firstAwesomeThingNameEl = element(this.repeater.row(0).column('{{thing.name}}'));
-  this.awesomeThingsCount = element.all(this.repeater).count();
+  // this.repeater = by.repeater('thing in awesomeThings');
+  // this.firstAwesomeThingNameEl = element(this.repeater.row(0).column('{{thing.name}}'));
+  // this.awesomeThingsCount = element.all(this.repeater).count();
 };
 
 module.exports = new MainPage();

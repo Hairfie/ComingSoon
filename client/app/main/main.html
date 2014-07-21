@@ -1,111 +1,95 @@
 <!-- <div ng-include="'components/navbar/navbar.html'"></div>
  -->
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Coming Soon</h1>
-    <p class="lead">The best app to find the best hairdressers</p>
-    <div ng-show="submitted">
-      <h3>Thanks for your submission!</h3>
-    </div>
-    <form class="form-horizontal" name="userForm" ng-show="!submitted">
-      <div>
-        <h3>You are :</h3>
-      </div>
-      <div ng-switch="step">
-        <!-- Gender -->
-        <div class="form-group" ng-switch-when="1">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default" ng-class="{active: newUser.gender == 'M'}">
-              <input type="radio" name="gender" ng-model="newUser.gender" id="genderMen" value="M">
-              a Men
-            </label>
-            <label class="btn btn-default" ng-class="{active: newUser.gender == 'F'}">
-              <input type="radio" name="gender" ng-model="newUser.gender" id="genderWomen" value="F">
-              a Women
-            </label>
-          </div>
-        </div>
+ <header>
+   <img src="assets/images/logo.png" alt="Hairfie">
+ </header>
 
-        <!-- Hairdresser -->
-        <div class="form-group" ng-switch-when="2">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default" ng-class="{active: newUser.hairdresser}">
-              <input type="radio" name="hairdresser" ng-model="newUser.hairdresser" id="hairdresserTrue" value=true>
-              a Hairdresser (even just for your friends)
-            </label>
-            <label class="btn btn-default" ng-class="{active: newUser.hairdresser == false}">
-              <input type="radio" name="hairdresser" ng-model="newUser.hairdresser" id="hairdresserFalse" value=false>
-              not a Hairdresser
-            </label>
-          </div>
-        </div>
-
-        <!-- Pro -->
-        <div class="form-group" ng-switch-when="3">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default" ng-class="{active: newUser.pro}">
-              <input type="radio" name="pro" ng-model="newUser.pro" id="proTrue" value=true>
-              a professional
-            </label>
-            <label class="btn btn-default" ng-class="{active: newUser.pro == false}">
-              <input type="radio" name="pro" ng-model="newUser.pro" id="proFalse" value=false>
-              a hairdresser just for fun
-            </label>
-          </div>
-        </div>
-
-        <!-- Salon -->
-        <div class="form-group" ng-switch-when="4">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default" ng-class="{active: newUser.salon}">
-              <input type="radio" name="salon" ng-model="newUser.salon" id="salonTrue" value=true>
-              working in a salon
-            </label>
-            <label class="btn btn-default" ng-class="{active: newUser.salon == false}">
-              <input type="radio" name="salon" ng-model="newUser.salon" id="salonFalse" value=false>
-              working alone
-            </label>
-          </div>
-        </div>
-
-        <!-- Email input-->
-        <div class="form-group has-feedback" ng-class="{'has-success': userForm.email.$valid && userForm.email.$dirty, 'has-error': userForm.email.$error.email && userForm.email.$dirty}" ng-switch-when="5">
-          <div class="input-group">
-            <input id="email" name="email" type="email" ng-model="newUser.email" placeholder="Email" class="form-control" required>
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button" ng-click="addUser()">Submit!</button>
-            </span>
-            <span class="form-control-feedback glyphicon" ng-show="userForm.email.$dirty" ng-class="{'glyphicon-ok': userForm.email.$valid, 'glyphicon-remove': userForm.email.$error.email}" style="right: 80px;"></span>
-          </div>
-        </div>
-      </div>
-    </form>
-<!--     <img src="assets/images/yeoman.png" alt="I'm Yeoman">ng-class="{glyphicon-ok: newUser.email.$valid}"
- -->
-    </div>
-</header>
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Dev</h1>
-
-      <h4 class="page-header">Step: {{step}}</h4>
-      <h4 class="page-header">Current newUser:</h4>
-        <ul class="nav nav-tabs nav-stacked col-lg-6">
-          <li>Email: {{ newUser.email }}</li>
-          <li>Hairdresser: {{ newUser.hairdresser }}</li>
-          <li>Gender: {{ newUser.gender }}</li>
-          <li>Pro: {{ newUser.pro }}</li>
-          <li>Salon: {{ newUser.salon }}</li>
-        </ul>
-      <h4 class="page-header">Users:</h4>
-      <ul class="nav nav-tabs nav-stacked col-lg-6" ng-repeat="user in users">
-        <li>{{user.email}}| Gender: {{user.gender}} | Pro: {{user.pro}} | Salon: {{user.salon}} | Hairdresser: {{ user.hairdresser }}</li>
-      </ul>
-    </div>
+<div class="container main">
+  <div class="title">
+    <h1>Launching Soon</h1>
+    <p class="border"></p>
   </div>
-</div> -->
+  <p class="lead">The best app to find the best hairdressers</p>
+  <div ng-show="submitted">
+    <h3>Thanks for your submission!</h3>
+  </div>
+  <form class="form-horizontal" name="userForm" ng-show="!submitted">
+    <div>
+      <h4>Who are you?</h4>
+    </div>
+    <div ng-switch="step" class="steps">
+      <!-- Gender -->
+      <div class="form-group step gender" ng-switch-when="1">
+        <div data-toggle="buttons">
+          <label class="btn btn-blue" ng-class="{active: newUser.gender == 'M'}">
+            <input type="radio" name="gender" ng-model="newUser.gender" id="genderMen" value="M">
+            Man
+          </label>
+          <span class="or">Or</span>
+          <label class="btn btn-blue" ng-class="{active: newUser.gender == 'F'}">
+            <input type="radio" name="gender" ng-model="newUser.gender" id="genderWomen" value="F">
+            Woman
+          </label>
+        </div>
+      </div>
+
+      <!-- Hairdresser -->
+      <div class="form-group step hairdresser" ng-switch-when="2">
+        <div data-toggle="buttons">
+          <label class="btn btn-blue" ng-class="{active: newUser.hairdresser}">
+            <input type="radio" name="hairdresser" ng-model="newUser.hairdresser" id="hairdresserTrue" value=true>
+            a Hairdresser (even just for your friends)
+          </label>
+          <span class="or">Or</span>
+          <label class="btn btn-blue" ng-class="{active: newUser.hairdresser == false}">
+            <input type="radio" name="hairdresser" ng-model="newUser.hairdresser" id="hairdresserFalse" value=false>
+            not a Hairdresser
+          </label>
+        </div>
+      </div>
+
+      <!-- Pro -->
+      <div class="form-group step pro" ng-switch-when="3">
+        <div data-toggle="buttons">
+          <label class="btn btn-blue" ng-class="{active: newUser.pro}">
+            <input type="radio" name="pro" ng-model="newUser.pro" id="proTrue" value=true>
+            a professional
+          </label>
+          <span class="or">Or</span>
+          <label class="btn btn-blue" ng-class="{active: newUser.pro == false}">
+            <input type="radio" name="pro" ng-model="newUser.pro" id="proFalse" value=false>
+            a hairdresser just for fun
+          </label>
+        </div>
+      </div>
+
+      <!-- Salon -->
+      <div class="form-group step salon" ng-switch-when="4">
+        <div data-toggle="buttons">
+          <label class="btn btn-blue" ng-class="{active: newUser.salon}">
+            <input type="radio" name="salon" ng-model="newUser.salon" id="salonTrue" value=true>
+            working in a salon
+          </label>
+          <span class="or">Or</span>
+          <label class="btn btn-blue" ng-class="{active: newUser.salon == false}">
+            <input type="radio" name="salon" ng-model="newUser.salon" id="salonFalse" value=false>
+            working alone
+          </label>
+        </div>
+      </div>
+
+      <!-- Email input-->
+      <div class="form-group has-feedback email form-inline" ng-class="{'has-success': userForm.email.$valid && userForm.email.$dirty, 'has-error': userForm.email.$error.email && userForm.email.$dirty}" ng-switch-when="5">
+        <div class="input-group">
+          <div class="input-group-addon"></div>
+          <input id="email" name="email" type="email" ng-model="newUser.email" placeholder="Email" class="form-control input-lg" required>
+          <span class="form-control-feedback glyphicon" ng-show="userForm.email.$dirty" ng-class="{'glyphicon-ok': userForm.email.$valid, 'glyphicon-remove': userForm.email.$error.email}"></span>
+        </div>
+        <button class="btn btn-lg btn-dark-blue" type="button" ng-click="addUser()" ng-disabled="!userForm.email.$valid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
 
 <footer class="footer">
   <div class="container">

@@ -23,8 +23,6 @@ angular.module('comingSoonApp')
 
     $scope.onUserChange = function(newValue, oldValue, scope) {
       if(newValue != oldValue) {
-        console.log($scope.step);
-        console.log($scope.newUser);
         switch($scope.step) {
           case 2:
             if($scope.newUser.hairdresser === "true") {
