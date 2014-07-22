@@ -34,7 +34,7 @@ header {
       font-size: 60px;
       line-height: 1;
       letter-spacing: -1px;
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing:2px;
     }
 
@@ -58,7 +58,7 @@ header {
     font-weight: 200;
 
     h4 {
-      font-weight: 200;
+      font-weight: 300;
       font-size: 20px;
     }
 
@@ -81,6 +81,7 @@ header {
 
       .input-group-addon {
         width: 30px;
+        padding: 20px;
         background-color: $dark-blue;
         border-color: $dark-blue;
         font-size: 16px;
@@ -174,7 +175,7 @@ header {
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen  and (min-width: 340px)and (max-width: 768px) {
   header {
     padding-top: 30px;
     img {
@@ -188,5 +189,49 @@ header {
 
   p.border {
     margin: 0 10% 0 10%;
+  }
+
+  .step .btn.btn-blue {
+    width: 80% !important;
+    padding: 13px 5px 13px 5px !important;
+  }
+
+  .email .input-group {
+    margin: 0 10% 5% 10%;;
+    width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  header {
+    padding-top: 30px;
+    padding-bottom: 0px;
+    img {
+      max-width: 100px;
+    }
+  }
+
+  .title h1 {
+    font-size: 30px !important;
+  }
+
+  p.border {
+    margin: 0 10% 0 10%;
+  }
+
+
+  .step .btn.btn-blue {
+    width: 80% !important;
+    font-size: 12px;
+    padding: 13px 5px 13px 5px !important;
+  }
+
+  .email .input-group {
+    margin: 0 10% 5% 10%;;
+    width: 90% !important;
+  }
+
+  .footer {
+    position: relative;
   }
 }
